@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import star from "../assets/star.png";
 
 type TestimonialCardProps = {
@@ -6,11 +7,17 @@ type TestimonialCardProps = {
   desc: string;
   image: string;
   rating: number;
+  i: number;
 };
 
-const TestimonialCard = ({ title, name, desc, image, rating }: TestimonialCardProps) => {
+const TestimonialCard = ({ title, name, desc, image, rating, i }: TestimonialCardProps) => {
   return (
-    <div className="bg-primary rounded-md p-6 flex flex-col justify-start w-full md:w-[800px]">
+    <motion.div
+      initial={{ opacity: 0, translateY: -50 }}
+      animate={{ opacity: 1, translateY: 0 }}
+      transition={{ duration: 1, delay: i * 1 }}
+      className="bg-primary rounded-md p-6 flex flex-col justify-start w-full md:w-[800px]"
+    >
       <p className="font-poppins font-medium text-[18px]">{desc}</p>
       <div className="flex flex-row justify-between items-center">
         <img src={image} alt="" />
@@ -22,7 +29,7 @@ const TestimonialCard = ({ title, name, desc, image, rating }: TestimonialCardPr
           <img src={star} alt="" className="object-contain" /> {rating}
         </span>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,9 +1,21 @@
 import { categoriesData } from "../constants";
 import CategoriesCard from "./CategoriesCard";
 import arrowRight from "../assets/arrowRight.png";
+import { useRef } from "react";
+import { useInView } from "framer-motion";
 const Categories = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   return (
-    <section className="flex flex-col justify-center items-center py-6 md:py-16 gap-16 ">
+    <section
+      ref={ref}
+      style={{
+        transform: isInView ? "none" : "translateY(-200px)",
+        opacity: isInView ? 1 : 0,
+        transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+      }}
+      className="flex flex-col justify-center items-center py-6 md:py-16 gap-16 "
+    >
       <div className="flex flex-col justify-center items-center gap-3 text-center my-6">
         <h2 className="font-poppins font-bold text-[32px]">Categories</h2>
         <p className="font-poppins font-medium text-[18px] opacity-50">

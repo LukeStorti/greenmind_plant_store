@@ -68,3 +68,12 @@ export const footerLinks = [
   { title: "Company", links: ["Community", "Career", "Our Story"] },
   { title: "Contact", links: ["Getting Started", "Pricing", "Resources"] },
 ];
+
+export const boxVariant = {
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 1, staggerChildren: 0.1, delayChildren: 0.3 },
+  },
+  hidden: { opacity: 0, x: -100 },
+};
